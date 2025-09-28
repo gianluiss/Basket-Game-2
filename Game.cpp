@@ -46,6 +46,18 @@ void Game::render() const
 // update basket state if moved or not
 void Game::update()
 {
+    if(!m_head)
+    {
+        std::cerr << "Error. Head is null\n";
+        return;
+    }
+
+    if(!m_tail)
+    {
+        std::cerr << "Error. Tail is null\n";
+        return;
+    }
+
     //Move sky down or add sky
     Sky* newSky = new Sky;
     newSky->setupLine();
