@@ -13,19 +13,13 @@ int main()
 
     game.initializeSky();
     game.render();
-    char c {};
-    do
+
+    while(game.isRunning())
     {
-        std::cin >> c;
+        game.handleInput();
         game.update();
         game.render();
-
-    } while(c != 'q');
-
-    /*
-    game.getHead()->setupLine();
-    game.render();
-    */
+    }
 
     return 0;
 }

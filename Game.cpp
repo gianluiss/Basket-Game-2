@@ -101,6 +101,14 @@ void Game::update()
    if(m_tail->line[m_basket.getPosition()] == '.') m_score -= 10;
 }
 
+void Game::handleInput()
+{
+    char input{};
+    std::cin >> input;
 
+    if(input == 'd') m_basket.moveRight();
+    else if(input == 'a') m_basket.moveLeft();
+    else if(input == 'q') m_running = false;
 
-//TOOL METHODS (Used within the class not outside):
+    return;
+}

@@ -15,6 +15,7 @@ private:
     // first value: basket position(m_position)
     // second value: border(m_border)
     Basket m_basket {19, 40}; 
+    bool m_running {true};
 
 public:
     // makes 20 nodes with blank sky
@@ -27,6 +28,10 @@ public:
     // checks collision
     // update basket state if moved or not
     void update();
+
+    void handleInput();
+
+    bool isRunning() const { return m_running; };
 
     // tools:
     bool isNull(Sky *node) const { return node == nullptr ? true : false; }
