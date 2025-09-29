@@ -31,7 +31,6 @@ public:
     void update();
     void handleInput(int input); //ncurses version
     bool isRunning() const { return m_running; };
-    
     int getScore() const { return m_score; }
 };
 
