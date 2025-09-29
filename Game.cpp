@@ -94,7 +94,7 @@ void Game::render() const
 // update basket state if moved or not
 void Game::update()
 {
-    if(m_score >= 100 || m_score <= 0) 
+    if(m_score >= m_maxScore || m_score <= 0) 
         m_running = false;
 
     if(!m_head)

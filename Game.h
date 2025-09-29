@@ -11,6 +11,7 @@ private:
     Sky* m_tail {nullptr};
     const int m_skySize {20}; //number of Sky nodes
     int m_score {50};
+    const int m_maxScore {100}; 
 
     // first value: basket position(m_position)
     // second value: border(m_border)
