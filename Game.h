@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "Sky.h"
+#include "Basket.h"
 
 class Game
 {
@@ -9,6 +10,7 @@ private:
     Sky* m_head {nullptr};
     Sky* m_tail {nullptr};
     //Basket 
+    Basket m_basket {19, 40};
 
     const int m_skySize {20};
 

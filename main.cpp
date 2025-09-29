@@ -12,8 +12,7 @@ int main()
     Game game;
 
     game.initializeSky();
-    //game.render();
-
+    game.render();
     char c {};
     do
     {

@@ -1,6 +1,5 @@
 #include "Game.h"
 
-
 void Game::initializeSky()
 {
     Sky* current = m_head;
@@ -35,7 +34,16 @@ void Game::render() const
     std::cout << "------------- Falling Money --------------\n";
     while(current != nullptr)
     {
-        std::cout << "|" << current->line << "|\n";
+        //Replace tail->line with basket position
+        if(current == m_tail)
+        {
+            std::string basketLine = m_tail->line;
+            basketLine[m_basket.getPosition()] = 'U';
+            std::cout << "|" << basketLine << "|\n";
+        }
+        else
+            std::cout << "|" << current->line << "|\n";
+
         current = current->next;
     }
 }
@@ -78,6 +86,15 @@ void Game::update()
         current = current->next;
     }
 
+    //Handle basket here
+
+    //Handle basket collisions
+    /*
+    Plan for basket collisions:
+    - Have the basket have a separate copy of node
+    - Show basket node instead of tail node
+    - Compare the current position of the basket to the tail line
+    */
 }
 
 
