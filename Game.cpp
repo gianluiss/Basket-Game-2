@@ -46,6 +46,11 @@ void Game::render() const
 
         current = current->next;
     }
+    std::cout << "Your Score: " << m_score << '\n';
+
+    //for debug 
+    //might use this for video explanation
+    //std::cout << m_tail->line[m_basket.getPosition()] << '\n';
 }
 
 // Moves sky down or adds line & deletes out of bounds node
@@ -81,20 +86,19 @@ void Game::update()
             delete m_tail;
             m_tail = current;
             current->next = nullptr;
-            return;
+            break;
         }
         current = current->next;
     }
 
-    //Handle basket here
-
-    //Handle basket collisions
     /*
     Plan for basket collisions:
-    - Have the basket have a separate copy of node
-    - Show basket node instead of tail node
-    - Compare the current position of the basket to the tail line
+        - Check if there's an object with the position of the basket in m_tail->line
     */
+   //might use this line for explanation
+   //std::cout << "Object in basket: " << m_tail->line[m_basket.getPosition()] << '\n';
+   if(m_tail->line[m_basket.getPosition()] == '$') m_score += 10;
+   if(m_tail->line[m_basket.getPosition()] == '.') m_score -= 10;
 }
 
 
