@@ -14,7 +14,7 @@ private:
 
     // first value: basket position(m_position)
     // second value: border(m_border)
-    Basket m_basket {19, 40}; 
+    Basket m_basket {19, 39}; 
     bool m_running {true};
 
 public:
@@ -28,14 +28,10 @@ public:
     // checks collision
     // update basket state if moved or not
     void update();
-
-    void handleInput();
-
+    void handleInput(int input); //ncurses version
     bool isRunning() const { return m_running; };
-
-    // tools:
-    bool isNull(Sky *node) const { return node == nullptr ? true : false; }
-    Sky* getHead() const { return m_head; }
+    
+    int getScore() const { return m_score; }
 };
 
 #endif

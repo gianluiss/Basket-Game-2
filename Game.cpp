@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "ncurses.h"
 
 void Game::initializeSky()
 {
@@ -22,6 +23,39 @@ void Game::initializeSky()
     m_tail = current;
 }
 
+//ncurses version
+void Game::render() const
+{
+    if(!m_head)
+    {
+        printw("Error. Head is null\n");
+        return;
+    }
+    
+    Sky* current = m_head;
+    printw("------------- Falling Money --------------\n");
+    while(current != nullptr)
+    {
+        //Replace tail->line with basket position
+        if(current == m_tail)
+        {
+            std::string basketLine = m_tail->line;
+            basketLine[m_basket.getPosition()] = 'U';
+            //std::cout << "|" << basketLine << "|\n";
+            printw("|%s|\n", basketLine.c_str());
+        }
+        else
+            printw("|%s|\n", current->line.c_str());
+            //std::cout << "|" << current->line << "|\n";
+
+        current = current->next;
+    }
+    //std::cout << "Your Score: " << m_score << '\n';
+    printw("Your Score: %d\n", m_score);
+}
+
+/*
+Initial version without the ncurses
 void Game::render() const
 {
     if(!m_head)
@@ -52,6 +86,7 @@ void Game::render() const
     //might use this for video explanation
     //std::cout << m_tail->line[m_basket.getPosition()] << '\n';
 }
+*/
 
 // Moves sky down or adds line & deletes out of bounds node
 // updates score
@@ -59,6 +94,9 @@ void Game::render() const
 // update basket state if moved or not
 void Game::update()
 {
+    if(m_score >= 100 || m_score <= 0) 
+        m_running = false;
+
     if(!m_head)
     {
         std::cerr << "Error. Head is null\n";
@@ -98,17 +136,30 @@ void Game::update()
    //might use this line for explanation
    //std::cout << "Object in basket: " << m_tail->line[m_basket.getPosition()] << '\n';
    if(m_tail->line[m_basket.getPosition()] == '$') m_score += 10;
-   if(m_tail->line[m_basket.getPosition()] == '.') m_score -= 10;
+   if(m_tail->line[m_basket.getPosition()] == '.') m_score -= 15;
 }
 
-void Game::handleInput()
+//ncurses version
+void Game::handleInput(int input)
 {
-    char input{};
-    std::cin >> input;
-
+    /*
     if(input == 'd') m_basket.moveRight();
     else if(input == 'a') m_basket.moveLeft();
     else if(input == 'q') m_running = false;
-
+    */
+    switch(input)
+    {
+        case 'q':
+            m_running = false;
+            break;
+        case KEY_RIGHT:
+            m_basket.moveRight();
+            break;
+        case KEY_LEFT:
+            m_basket.moveLeft();
+            break;
+        default:
+            break;
+    }
     return;
 }
