@@ -1,4 +1,4 @@
-TARGET = basket-game
+TARGET = basket-game.exe
 
 CXX = g++
 CXXFLAGS = -Wall -std=c++17
@@ -6,7 +6,7 @@ CXXFLAGS = -Wall -std=c++17
 SRCS := $(wildcard *.cpp)
 
 $(TARGET): $(SRCS)
-	$(CXX) $(CXXFLAGS) $(SRCS) -o $(TARGET) -lncurses
+	$(CXX) $(CXXFLAGS) $(SRCS) -o $(TARGET)
 
 clean:
-	rm -f $(TARGET)
+	del $(TARGET)

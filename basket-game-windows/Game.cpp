@@ -112,10 +112,10 @@ void Game::handleInput(char input)
       case 77:
 	 m_basket.moveRight();
 	 break;
-      case 'a':
+      case 'd':
 	 m_basket.moveRight();
 	 break;
-      case 'd':
+      case 'a':
 	 m_basket.moveLeft();
 	 break;
       default:

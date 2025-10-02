@@ -22,7 +22,7 @@ int main()
    Game game;
    game.initializeSky();
    
-   const int gameHeight = game.getSkySize()+2; //+2 here includes the Falling money line and score line
+   const int gameHeight = game.getSkySize()+1; 
 
    char input = 0;
    while(game.isRunning())
@@ -50,7 +50,7 @@ int main()
    else if(game.getScore() <= 0)
       std::cout << "Sorry, you lose...\n";
    else
-      std::cout << "Error. program ended with invalid score\n";
+      std::cout << "Program closed...\n";
 
    return 0;
 }
