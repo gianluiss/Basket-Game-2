@@ -9,6 +9,7 @@ struct Sky
     Sky* next {nullptr};
 
     const int lineSize {40};
+    const int itemsPerLine {2};
 
     void setupLine(); //generate random objects within line
 };

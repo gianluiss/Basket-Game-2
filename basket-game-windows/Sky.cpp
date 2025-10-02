@@ -6,23 +6,20 @@
 
 void Sky::setupLine()
 {
-    for(int i = 0; i < lineSize; i++)
-    {
-        int state = std::rand() % 100 + 1;
+   int counter {};
+   while(counter < itemsPerLine)
+   {
+      int itemPicker {std::rand() % 2};
+      char item {itemPicker == 0 ? '$' : '.'};
 
-        if(state > 100 || state < 0)
-        {
-            std::cerr << "Error. Invalid State\n";
-            return;
-        }
+      int index {std::rand() % lineSize};
 
-
-
-        // handle object chances here
-        if(state >= 97 && state <= 98)
-            line[i] = '$';
-
-        if(state >= 99 && state <= 100)
-            line[i] = '.';
-    }
+      if(line[index] == '$' || line[index] == '.')
+	 continue;
+      else
+      {
+	 line[index] = item;
+	 counter++;
+      }
+   }
 }
