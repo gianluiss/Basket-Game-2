@@ -5,11 +5,10 @@
 
 struct Sky
 {
-    std::string line {"                                        "};
-    Sky* next {nullptr};
-
     const int lineSize {40};
     const int itemsPerLine {2};
+    std::string line {std::string(lineSize, ' ')};
+    Sky* next {nullptr};
 
     void setupLine(); //generate random objects within line
 };
